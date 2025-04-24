@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:admin_panel/views/main_screen.dart';
 import 'package:admin_panel/viewmodels/appointment_viewmodel.dart';
 import 'package:admin_panel/viewmodels/doctor_viewmodel.dart';
@@ -20,10 +21,34 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(colorSchemeSeed: Colors.red),
-      debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+    return AdaptiveTheme(
+      initial: AdaptiveThemeMode.light,
+      light: ThemeData(
+        brightness: Brightness.light,
+        appBarTheme: const AppBarTheme(),
+      ),
+      dark: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+        ),
+      ),
+      builder: (light, dark) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+
+          theme: light,
+          darkTheme: dark,
+          home: MainScreen(),
+        );
+      },
     );
   }
 }
+// MaterialApp(
+//       theme: ThemeData(colorSchemeSeed: Colors.red),
+//       debugShowCheckedModeBanner: false,
+//       home: MainScreen(),
+//     );

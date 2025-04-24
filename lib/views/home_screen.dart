@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:admin_panel/models/treatment_model.dart';
 import 'package:admin_panel/viewmodels/appointment_viewmodel.dart';
 import 'package:admin_panel/viewmodels/doctor_viewmodel.dart';
@@ -28,6 +29,18 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text("Admin panel"),
         titleTextStyle: TextStyle(fontSize: 25, color: Colors.black),
+        actions: [
+          IconButton(
+            onPressed: () {
+              if (AdaptiveTheme.of(context).mode == AdaptiveThemeMode.light) {
+                AdaptiveTheme.of(context).setDark();
+              } else {
+                AdaptiveTheme.of(context).setLight();
+              }
+            },
+            icon: Icon(Icons.dark_mode),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15),
