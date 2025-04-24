@@ -86,7 +86,9 @@ class _MoreInfoScreenState extends State<MoreInfoScreen> {
           ),
           Divider(height: 2, color: Colors.black, endIndent: 15, indent: 15),
           ListTile(
-            title: Text("Qabul vaqti: ${appo!.date}, ${appo!.time}"),
+            title: Text(
+              "Qabul vaqti: ${appo!.date.toIso8601String().split('T')[0]}, ${appo!.time.hour.toString().padLeft(2, "0")}:${appo!.time.minute.toString().padLeft(2, "0")}",
+            ),
             subtitle: Column(
               spacing: 10,
               crossAxisAlignment: CrossAxisAlignment.start,
