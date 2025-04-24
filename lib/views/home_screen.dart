@@ -27,8 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Admin panel"),
-        titleTextStyle: TextStyle(fontSize: 25, color: Colors.black),
+        title: Text("Admin panel", style: TextStyle(fontSize: 25)),
+
         actions: [
           IconButton(
             onPressed: () {
@@ -38,7 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 AdaptiveTheme.of(context).setLight();
               }
             },
-            icon: Icon(Icons.dark_mode),
+            icon:
+                (AdaptiveTheme.of(context).mode == AdaptiveThemeMode.light)
+                    ? Icon(Icons.dark_mode)
+                    : Icon(Icons.light_mode),
           ),
         ],
       ),
@@ -71,15 +74,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       },
-                      titleTextStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                      ),
                       shape: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(14)),
                         borderSide: BorderSide(
                           width: 2,
-                          color: Colors.black.withValues(alpha: 0.3),
+                          color:
+                              AdaptiveTheme.of(context).mode ==
+                                      AdaptiveThemeMode.light
+                                  ? Colors.black.withValues(alpha: 0.3)
+                                  : Colors.white.withValues(alpha: 0.3),
                         ),
                       ),
                       title: Text(
@@ -92,7 +95,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             margin: EdgeInsets.symmetric(vertical: 10),
                             height: 2,
                             width: 200,
-                            color: Colors.black.withValues(alpha: 0.3),
+                            color:
+                                AdaptiveTheme.of(context).mode ==
+                                        AdaptiveThemeMode.light
+                                    ? Colors.black.withValues(alpha: 0.3)
+                                    : Colors.white.withValues(alpha: 0.3),
                           ),
                           Text("Tashxis: ${treat.diagnosis}"),
                           Text("Shifokor ko'rsatmasi: ${treat.prescription}."),

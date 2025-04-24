@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:admin_panel/models/appoinment_models.dart';
 import 'package:admin_panel/viewmodels/appointment_viewmodel.dart';
 import 'package:admin_panel/viewmodels/doctor_viewmodel.dart';
@@ -22,10 +23,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Qabullar"),
-        titleTextStyle: TextStyle(fontSize: 25, color: Colors.black),
-      ),
+      appBar: AppBar(title: Text("Qabullar", style: TextStyle(fontSize: 25))),
       body: Padding(
         padding: const EdgeInsets.only(top: 15),
         child: Column(
@@ -46,14 +44,22 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: ListTile(
                       titleTextStyle: TextStyle(
-                        color: Colors.black,
+                        color:
+                            AdaptiveTheme.of(context).mode ==
+                                    AdaptiveThemeMode.light
+                                ? Colors.black
+                                : Colors.white,
                         fontSize: 18,
                       ),
                       shape: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(14)),
                         borderSide: BorderSide(
                           width: 2,
-                          color: Colors.black.withValues(alpha: 0.3),
+                          color:
+                              AdaptiveTheme.of(context).mode ==
+                                      AdaptiveThemeMode.light
+                                  ? Colors.black.withValues(alpha: 0.3)
+                                  : Colors.white.withValues(alpha: 0.3),
                         ),
                       ),
                       onTap: () {
@@ -242,7 +248,11 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                             margin: EdgeInsets.symmetric(vertical: 10),
                             height: 2,
                             width: 200,
-                            color: Colors.black.withValues(alpha: 0.3),
+                            color:
+                                AdaptiveTheme.of(context).mode ==
+                                        AdaptiveThemeMode.light
+                                    ? Colors.black.withValues(alpha: 0.3)
+                                    : Colors.white.withValues(alpha: 0.3),
                           ),
                           Text("Doctor name: ${doctor!.name}"),
                           Text("Davomiyligi: ${appo.duration} daqiqa."),

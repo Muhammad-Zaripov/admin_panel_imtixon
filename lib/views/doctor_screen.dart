@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:admin_panel/models/doctor_models.dart';
 import 'package:admin_panel/viewmodels/doctor_viewmodel.dart';
 import 'package:admin_panel/widgets/edit_doctor_dialog.dart';
@@ -37,8 +38,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
         iconSize: 35,
       ),
       appBar: AppBar(
-        title: Text("Shifokorlar"),
-        titleTextStyle: TextStyle(fontSize: 25, color: Colors.black),
+        title: Text("Shifokorlar", style: TextStyle(fontSize: 25)),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15),
@@ -69,10 +69,21 @@ class _DoctorScreenState extends State<DoctorScreen> {
 
                           fontSize: 20,
                         ),
-                        textColor: Colors.black,
+                        textColor:
+                            AdaptiveTheme.of(context).mode ==
+                                    AdaptiveThemeMode.light
+                                ? Colors.black
+                                : Colors.white,
                         shape: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide: BorderSide(width: 2, color: Colors.black),
+                          borderSide: BorderSide(
+                            width: 2,
+                            color:
+                                AdaptiveTheme.of(context).mode ==
+                                        AdaptiveThemeMode.light
+                                    ? Colors.black.withValues(alpha: 0.3)
+                                    : Colors.white.withValues(alpha: 0.3),
+                          ),
                         ),
                         onTap: () async {
                           await showDialog(
@@ -114,7 +125,6 @@ class _DoctorScreenState extends State<DoctorScreen> {
                             Text("Ish joyi: ${doc.location}"),
                           ],
                         ),
-                        // trailing: Image.network(doc["locationImage"]),
                       ),
                     ),
                   );

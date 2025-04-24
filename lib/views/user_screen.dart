@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:admin_panel/models/user_model.dart';
 import 'package:admin_panel/viewmodels/user_viewmodel.dart';
 import 'package:admin_panel/widgets/add_user_alert_dialog.dart';
@@ -39,8 +40,7 @@ class _UserScreenState extends State<UserScreen> {
         iconSize: 35,
       ),
       appBar: AppBar(
-        title: Text("Foydalanuvchilar"),
-        titleTextStyle: TextStyle(fontSize: 25, color: Colors.black),
+        title: Text("Foydalanuvchilar", style: TextStyle(fontSize: 25)),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15),
@@ -59,14 +59,22 @@ class _UserScreenState extends State<UserScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: ListTile(
                       titleTextStyle: TextStyle(
-                        color: Colors.black,
+                        color:
+                            AdaptiveTheme.of(context).mode ==
+                                    AdaptiveThemeMode.light
+                                ? Colors.black
+                                : Colors.white,
                         fontSize: 18,
                       ),
                       shape: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         borderSide: BorderSide(
                           width: 2,
-                          color: Colors.black.withValues(alpha: 0.3),
+                          color:
+                              AdaptiveTheme.of(context).mode ==
+                                      AdaptiveThemeMode.light
+                                  ? Colors.black.withValues(alpha: 0.3)
+                                  : Colors.white.withValues(alpha: 0.3),
                         ),
                       ),
                       onTap: () async {
@@ -90,7 +98,11 @@ class _UserScreenState extends State<UserScreen> {
                             margin: EdgeInsets.symmetric(vertical: 10),
                             height: 2,
                             width: 250,
-                            color: Colors.black.withValues(alpha: 0.3),
+                            color:
+                                AdaptiveTheme.of(context).mode ==
+                                        AdaptiveThemeMode.light
+                                    ? Colors.black.withValues(alpha: 0.3)
+                                    : Colors.white.withValues(alpha: 0.3),
                           ),
                           Text("Ismi: ${user.name}"),
                           Text("Familiyasi: ${user.surname}"),

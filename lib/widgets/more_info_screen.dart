@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:admin_panel/models/appoinment_models.dart';
 import 'package:admin_panel/models/doctor_models.dart';
 import 'package:admin_panel/models/treatment_model.dart';
@@ -84,7 +85,15 @@ class _MoreInfoScreenState extends State<MoreInfoScreen> {
               ),
             ],
           ),
-          Divider(height: 2, color: Colors.black, endIndent: 15, indent: 15),
+          Divider(
+            height: 2,
+            color:
+                AdaptiveTheme.of(context).mode == AdaptiveThemeMode.light
+                    ? Colors.black.withValues(alpha: 0.3)
+                    : Colors.white.withValues(alpha: 0.3),
+            endIndent: 15,
+            indent: 15,
+          ),
           ListTile(
             title: Text(
               "Qabul vaqti: ${appo!.date.toIso8601String().split('T')[0]}, ${appo!.time.hour.toString().padLeft(2, "0")}:${appo!.time.minute.toString().padLeft(2, "0")}",

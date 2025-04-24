@@ -23,18 +23,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveTheme(
       initial: AdaptiveThemeMode.light,
-      light: ThemeData(
-        brightness: Brightness.light,
-        appBarTheme: const AppBarTheme(),
-      ),
-      dark: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.black,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.black,
-          foregroundColor: Colors.white,
-        ),
-      ),
+      light: ThemeData(brightness: Brightness.light),
+      dark: ThemeData(brightness: Brightness.dark),
       builder: (light, dark) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -47,8 +37,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-// MaterialApp(
-//       theme: ThemeData(colorSchemeSeed: Colors.red),
-//       debugShowCheckedModeBanner: false,
-//       home: MainScreen(),
-//     );
